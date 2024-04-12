@@ -117,4 +117,10 @@ return require('packer').startup(function(use)
 
   -- 编辑历史 & 回退
   use 'mbbill/undotree'
+
+  -- 选中多个
+  use 'mg979/vim-visual-multi'
+
+  -- search and replace
+  use 'dyng/ctrlsf.vim'
 end)
