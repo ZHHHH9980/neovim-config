@@ -23,8 +23,6 @@ return require('packer').startup(function(use)
   -- color theme
   use 'sainnhe/everforest'
 
-  -- git tools
-  use "lewis6991/gitsigns.nvim"
 
   -- bottom tools
   use {
@@ -71,6 +69,9 @@ return require('packer').startup(function(use)
       })
     end
   })
+
+  -- git tools
+  use('tpope/vim-fugitive')
 
   -- 启动页
   use {
