@@ -12,6 +12,23 @@ end
 
 require('lualine').setup {
   sections = {
+    lualine_a = {
+      {
+        'mode',
+        fmt = function(mode_name)
+          local mode_map = {
+            ['NORMAL'] = 'N',
+            ['INSERT'] = 'I',
+            ['VISUAL'] = 'V',
+            ['COMMAND'] = 'C',
+            ['SELECT'] = 'S',
+            ['REPLACE'] = 'R',
+            ['TERMINAL'] = 'T',
+          }
+          return mode_map[mode_name] or mode_name
+        end
+      }
+    },
     lualine_c = {
       {
         'filename',
