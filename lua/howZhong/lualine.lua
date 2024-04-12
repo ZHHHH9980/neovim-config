@@ -22,5 +22,8 @@ require('lualine').setup {
         color = { fg = "#ff9900" },
       },
     },
+    lualine_x = {}, -- 将 lualine_x 设置为空表,隐藏其中的组件
+    lualine_y = {}, -- 将 lualine_y 设置为空表,隐藏其中的组件
+    lualine_z = {}  -- 将 lualine_z 设置为空表,隐藏其中的组件
   },
 }

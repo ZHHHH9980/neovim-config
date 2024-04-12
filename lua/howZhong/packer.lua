@@ -114,6 +114,6 @@ return require('packer').startup(function(use)
   -- jsx 自动闭合标签
   use 'windwp/nvim-ts-autotag'
 
-  -- 编辑历史
+  -- 编辑历史 & 回退
   use 'mbbill/undotree'
 end)

@@ -9,6 +9,6 @@ vim.keymap.set('n', 'R', ':BufferLineCycleNext<CR>', { noremap = true, silent = 
 
 require("bufferline").setup {
   options = {
-    path = 'relative', -- 显示相对路径
+    max_name_length = 30
   }
 }
