@@ -74,15 +74,26 @@ return require('packer').startup(function(use)
   use('tpope/vim-fugitive')
 
   -- 启动页
+  -- use {
+  --   'nvimdev/dashboard-nvim',
+  --   event = 'VimEnter',
+  --   config = function()
+  --     require('dashboard').setup {
+  --
+  --     }
+  --   end,
+  --   requires = { 'nvim-tree/nvim-web-devicons' }
+  -- }
+  --
   use {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
+    'goolord/alpha-nvim',
+    requires = {
+      'nvim-tree/nvim-web-devicons',
+      'nvim-lua/plenary.nvim'
+    },
     config = function()
-      require('dashboard').setup {
-        -- config
-      }
-    end,
-    requires = { 'nvim-tree/nvim-web-devicons' }
+      require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
+    end
   }
 
   use {
