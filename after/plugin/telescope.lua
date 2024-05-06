@@ -66,3 +66,13 @@ vim.keymap.set('n', 'gr', function()
     },
   })
 end, { desc = '[P]review [R]eferences' })
+
+
+
+-- 设置快捷键映射
+vim.api.nvim_set_keymap(
+  'n',                              -- 模式 - 正常模式
+  '<leader>r',                      -- 按键组合
+  "<cmd>Telescope registers<cr>",   -- 执行的命令
+  { noremap = true, silent = true } -- 映射选项
+)
