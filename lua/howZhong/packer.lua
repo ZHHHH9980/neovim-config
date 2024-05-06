@@ -123,4 +123,16 @@ return require('packer').startup(function(use)
 
   -- search and replace
   use 'dyng/ctrlsf.vim'
+
+  use({
+    "andrewferrier/debugprint.nvim",
+    config = function()
+      local opts = require('howZhong.debugprint')   -- 引入配置
+      require("debugprint").setup(opts)
+    end,
+    requires = {
+      "echasnovski/mini.nvim",            -- 为 NeoVim <= 0.9 启用 :ToggleCommentDebugPrints
+      "nvim-treesitter/nvim-treesitter"   -- 为 NeoVim 0.8 启用 treesitter
+    }
+  })
 end)
