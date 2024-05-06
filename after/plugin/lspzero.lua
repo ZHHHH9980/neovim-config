@@ -1,5 +1,6 @@
 local cmp = require('cmp')
 local lsp = require("lsp-zero")
+local luasnip = require('luasnip')
 
 require('lspconfig').intelephense.setup({})
 
@@ -12,6 +13,7 @@ require('mason-lspconfig').setup({
 require('mason-null-ls').setup({
   ensure_installed = { 'prettier', 'eslint' }
 })
+
 
 lsp.set_preferences({
   suggest_lsp_servers = false,
@@ -97,6 +99,11 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 cmp.setup({
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body) -- LuaSnip 负责处理展开
+    end,
+  },
   mapping = {
     ['<C-i>'] = cmp.mapping.select_prev_item(),
     ['<C-k>'] = cmp.mapping.select_next_item(),
@@ -105,17 +112,11 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
   },
   sources = {
     { name = 'nvim_lsp' },
     { name = 'buffer' },
+    { name = 'luasnip' }
   },
   preselect = cmp.PreselectMode.Item,
 })

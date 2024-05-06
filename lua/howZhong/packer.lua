@@ -73,16 +73,15 @@ return require('packer').startup(function(use)
   -- git tools
   use('tpope/vim-fugitive')
 
-  -- 启动页
   use {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
+    'goolord/alpha-nvim',
+    requires = {
+      'nvim-tree/nvim-web-devicons',
+      'nvim-lua/plenary.nvim'
+    },
     config = function()
-      require('dashboard').setup {
-        -- config
-      }
-    end,
-    requires = { 'nvim-tree/nvim-web-devicons' }
+      require 'alpha'.setup(require 'alpha.themes.dashboard'.config)
+    end
   }
 
   use {
@@ -96,6 +95,7 @@ return require('packer').startup(function(use)
       -- LSP Support
       { 'neovim/nvim-lspconfig' },
       -- Autocompletion
+      { 'saadparwaiz1/cmp_luasnip' },
       { 'hrsh7th/nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'L3MON4D3/LuaSnip' },
