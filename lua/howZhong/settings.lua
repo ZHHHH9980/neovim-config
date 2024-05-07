@@ -58,14 +58,14 @@ vim.opt.guicursor:append("r-cr:hor20")
 function SetVisualHighlight()
   -- 设置 Visual 模式的高亮组
   vim.cmd([[
-                  hi Visual guibg=#FF8C00 guifg=white
-                      ]])
+    hi Visual guibg=#FF8C00 guifg=white
+  ]])
 end
 
 -- 在 VimEnter 自动命令中调用 SetVisualHighlight 函数
 vim.cmd([[
-                        augroup CustomVisualHighlight
-                                autocmd!
-                                        autocmd VimEnter * lua SetVisualHighlight()
-                                            augroup END
-                                            ]])
+  augroup CustomVisualHighlight
+  autocmd!
+  autocmd VimEnter * lua SetVisualHighlight()
+  augroup END
+]])
