@@ -73,18 +73,6 @@ return require('packer').startup(function(use)
   -- git tools
   use('tpope/vim-fugitive')
 
-  -- 启动页
-  -- use {
-  --   'nvimdev/dashboard-nvim',
-  --   event = 'VimEnter',
-  --   config = function()
-  --     require('dashboard').setup {
-  --
-  --     }
-  --   end,
-  --   requires = { 'nvim-tree/nvim-web-devicons' }
-  -- }
-  --
   use {
     'goolord/alpha-nvim',
     requires = {
@@ -107,6 +95,7 @@ return require('packer').startup(function(use)
       -- LSP Support
       { 'neovim/nvim-lspconfig' },
       -- Autocompletion
+      { 'saadparwaiz1/cmp_luasnip' },
       { 'hrsh7th/nvim-cmp' },
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'L3MON4D3/LuaSnip' },
@@ -134,4 +123,16 @@ return require('packer').startup(function(use)
 
   -- search and replace
   use 'dyng/ctrlsf.vim'
+
+  use({
+    "andrewferrier/debugprint.nvim",
+    config = function()
+      local opts = require('howZhong.debugprint')   -- 引入配置
+      require("debugprint").setup(opts)
+    end,
+    requires = {
+      "echasnovski/mini.nvim",            -- 为 NeoVim <= 0.9 启用 :ToggleCommentDebugPrints
+      "nvim-treesitter/nvim-treesitter"   -- 为 NeoVim 0.8 启用 treesitter
+    }
+  })
 end)

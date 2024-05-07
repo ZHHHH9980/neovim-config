@@ -50,8 +50,6 @@ vim.api.nvim_set_keymap('v', '<C-c>', '"+y', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<C-v>', '"+p', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('i', '<C-v>', '<C-r>+', { noremap = true, silent = true })
 
--- visual mode , replace selection with default register
--- vim.api.nvim_set_keymap('v', 'r', '"_dP', { noremap = true, silent = true })
 
 -- nd -> delete and copy
 -- d -> only delete
@@ -70,16 +68,3 @@ vim.api.nvim_set_keymap('n', 'c', '"_c', { noremap = true, silent = true })
 -- the same as above
 vim.api.nvim_set_keymap('v', 'nc', 'c', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', 'c', '"_c', { noremap = true, silent = true })
-
--- Define a function to simplify key mapping
-local function map(mode, lhs, rhs, opts)
-  local options = { noremap = true }
-  if opts then options = vim.tbl_extend('force', options, opts) end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
--- Insert mode mappings
-map('i', 'im', 'import ', {})
-map('i', 'ex', 'export ', {})
-map('i', 'rn', 'return ', {})
-map('i', 'co', 'const ', {})
