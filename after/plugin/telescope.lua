@@ -21,23 +21,6 @@ telescope.setup({
   },
 })
 
--- Logging functions
-local function get_log_file_path()
-  return vim.fn.getcwd() .. "/telescope_log.txt"
-end
-
-
-local function write_log(message)
-  local log_file_path = get_log_file_path()
-  local log_file = io.open(log_file_path, "a")
-  if log_file then
-    log_file:write(message .. "\n")
-    log_file:close()
-  else
-    vim.notify("Failed to write to log file at " .. log_file_path, vim.log.levels.ERROR)
-  end
-end
-
 
 
 -- Key mappings
@@ -91,9 +74,7 @@ function vim.getVisualSelection()
 end
 
 vim.keymap.set('v', '<leader>ps', function()
-  write_log("Executing '<leader>ps' mapping")
   local selected_text = vim.getVisualSelection()
-  write_log("Selected text: " .. selected_text)
   builtin.live_grep({
     prompt_title = 'Search in Files',
     default_text = selected_text,
